@@ -4,6 +4,8 @@ CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 RM = rm -f
 
 SRC = push_swap.c parser.c t_struct.c atoi_pushswap.c utils.c \
+mov_swap_push.c mov_rotate.c mov_reverserotate.c sorting.c \
+set_stacks.c \
 
 INCLUDE = push_swap.h
 

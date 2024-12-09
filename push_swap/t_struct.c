@@ -6,7 +6,7 @@
 /*   By: aldferna <aldferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 14:14:02 by aldferna          #+#    #+#             */
-/*   Updated: 2024/11/05 15:54:32 by aldferna         ###   ########.fr       */
+/*   Updated: 2024/12/05 17:43:11 by aldferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ t_struct	*ft_structnew(int content)
 {
 	t_struct	*new_node;
 
-	new_node = (t_struct *)malloc(sizeof(t_struct));
+	new_node = ft_calloc(1, sizeof(t_struct));
 	if (!new_node)
 		return (NULL);
 	new_node->content = content;
-	new_node->next = NULL;
+	new_node->target_index = -5;
 	return (new_node);
 }
 
@@ -48,16 +48,6 @@ void	ft_structadd_back(t_struct **lst, t_struct *new)
 	}
 }
 
-
-// void	ft_structiter(t_struct *lst, void (*f)(int))
-// {
-// 	while (lst != NULL)
-// 	{
-// 		f(lst->content);
-// 		lst = lst->next;
-// 	}
-// }
-
 void	ft_structclear(t_struct **lst)
 {
 	t_struct	*temp;
@@ -69,4 +59,19 @@ void	ft_structclear(t_struct **lst)
 		*lst = temp;
 	}
 	*lst = NULL;
+}
+
+int	ft_structsize(t_struct *lst)
+{
+	int	i;
+
+	i = 0;
+	if (lst == NULL)
+		return (0);
+	while (lst != NULL)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }
