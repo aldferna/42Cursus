@@ -5,7 +5,7 @@ RM = rm -f
 
 SRC = push_swap.c parser.c t_struct.c atoi_pushswap.c utils.c \
 mov_swap_push.c mov_rotate.c mov_reverserotate.c sorting.c \
-set_stacks.c \
+set_stacks.c move_a_to_b.c move_b_to_a.c \
 
 INCLUDE = push_swap.h
 

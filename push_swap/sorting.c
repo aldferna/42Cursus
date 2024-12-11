@@ -6,7 +6,7 @@
 /*   By: aldferna <aldferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:53:13 by aldferna          #+#    #+#             */
-/*   Updated: 2024/12/09 14:02:30 by aldferna         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:59:09 by aldferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int find_max(t_struct *stack)
 		stack = stack->next;
         position++;
 	}
-	//if (max == INT_MIN)
-		//max_position = 1;
+	if (max == INT_MIN)
+		max_position = 1;
 	return (max_position);
 }
 
@@ -55,7 +55,8 @@ int find_min(t_struct *stack)
 		stack = stack->next;
         position++;
 	}
-    //printf("%i\n", min_position);
+	if (min == INT_MAX)
+		min_position = 1;
 	return (min_position);
 }
 
@@ -76,9 +77,9 @@ void	sort_three(t_struct **stack_a)
 
     position = find_max(*stack_a);
     if (position == 1)
-        ft_rotate_a(stack_a);
+        ft_rotate_a(stack_a, 1);
     else if (position == 2)
-        ft_reverse_rotate_a(stack_a);
+        ft_reverse_rotate_a(stack_a, 1);
     else if (position == 3)
     {
         if ((*stack_a)->content > (*stack_a)->next->content)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_stack.c                                        :+:      :+:    :+:   */
+/*   set_stacks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aldferna <aldferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 14:23:58 by aldferna          #+#    #+#             */
-/*   Updated: 2024/12/09 14:24:41 by aldferna         ###   ########.fr       */
+/*   Updated: 2024/12/11 18:45:44 by aldferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,9 @@ void put_index(t_struct *stack)
 		i++;
 		stack = stack->next;
 	}
-return;
 }
 
-void	search_target(t_struct *stack_a, t_struct *stack_b)
+void	search_target_in_b(t_struct *stack_a, t_struct *stack_b)
 {
 	int target_nbr;
 	t_struct *aux;
@@ -57,7 +56,6 @@ void	search_target(t_struct *stack_a, t_struct *stack_b)
 		//printf("find_max en B: %i\n", find_max(stack_b));
 		stack_a = stack_a->next;
 	}
-	return;
 }
 
 void    set_cost(t_struct *stack_a, t_struct *stack_b)
@@ -84,7 +82,6 @@ void    set_cost(t_struct *stack_a, t_struct *stack_b)
             stack_a->push_cost = a_below + (stack_a->target_index - 1);
         stack_a = stack_a->next;
     }
-    return;
 }
 
 void set_cheapest(t_struct *stack_a)
@@ -107,14 +104,13 @@ void set_cheapest(t_struct *stack_a)
         }
         stack_a = stack_a->next;
     }
-    return;
 }
 
 void set_stacks(t_struct *stack_a, t_struct *stack_b)
 {
 	put_index(stack_a);
 	put_index(stack_b);
-	search_target(stack_a, stack_b);
+	search_target_in_b(stack_a, stack_b);
 	set_cost(stack_a, stack_b);
 	set_cheapest(stack_a);
 	// while (stack_a)
